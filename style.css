@@ -2,23 +2,21 @@ body {
     background: ivory;
     font-family: 'Courier New', Courier, monospace;
     margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100;
+
 }
 
 button {
-    background-color: blue;
+    width: 100%;
+    background-color: blueviolet;
     color: white;
-    padding: 10px 20px;
+    padding: 12px;
     border-radius: 25px;
     border: none;
-}
-
-footer {
-    background-color: white;
-    border-radius: 25px;
-    color: blue;
-    border-color: blue ;
-    padding: 10px 20px;
-   
+    margin-top: 15px;
 }
 
 input {
@@ -27,4 +25,12 @@ input {
   padding: 10px;
   margin: 10px 0;
   border-radius: 25px;
+}
+
+form {
+    width: 350px;             
+    margin: 50px auto;         
+    padding: 30px;
+    background: white;
+    border-radius: 15px;
 }

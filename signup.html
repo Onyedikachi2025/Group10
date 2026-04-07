@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Signup</title>
+    <title>Signup Page</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -47,32 +47,30 @@ async function handleSubmit() {
   }
 }
 </script>
-  
-  <body>
-    <form>
+<body>
+  <div class="form-container">
     <header>
-    <h1>Tallaght Uni</h1>
+      <h1>Sign up for TUD</h1>
     </header>
-      <label for="Email address">Moblie Number or Email Address</label>
-      <input type="text" id="email" name="email" placeholder="Email Address" required/>
+
+    <form id="signupForm">
+      <label for="email">Mobile Number or Email Address</label>
+      <input type="text" id="email" placeholder="Email Address" required />
 
       <label for="password">Password</label>
-      <input type="password" id="password" name="password" placeholder="Password" required/>
+      <input type="password" id="password" placeholder="Password" required />
 
-      <label for="birthday">Date of brith</label>
-      <input type="date" required>
+      <label for="dob">Date of Birth</label>
+      <input type="date" id="date of brith" required>
 
-      <label for="Username">Username</label>
-      <input type="text" id="name" name="name" placeholder="Username" required/>
+      <label for="user_name">Username</label>
+      <input type="text" id="username" placeholder="Username" required />
 
-      <button onclick="handleSubmit()">Submit</button>
-      </form>
-
+      <button type="button" onclick="handleSubmit()">Submit</button>
+    </form>
     <p class="login-link">
-      <a href="loginin.html">I already have an account</a>
+      <a href="login.html">I already have an account</a>
     </p>
-    </div>
-    <footer>
-    <footer>
-  </body>
+  </div>
+</body>
 </html>

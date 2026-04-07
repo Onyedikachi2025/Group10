@@ -2,50 +2,63 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   background-color: #eaf3ff;
-}
-
-.signup-page {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100;
+  min-height: 100vh;
 }
 
-.signup-page {
-  width: 150px;
+.form-container {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px black;
+  width: 100%;
+  max-width: 400px; 
 }
 
 header h1 {
   text-align: center;
+  margin-top: 0;
   margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: bold;
 }
 
 input {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 12px;
+  padding: 12px;
+  margin-bottom: 20px;
   border: 1px solid #ccc;
-  border-radius: 10px; 
-  box-sizing: border-box;
+  border-radius: 8px; 
+  box-sizing: border-box; 
 }
 
 button {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   border: none;
-  border-radius: 20px;
-  background-color: #4a90e2;
+  border-radius: 8px;
+  background-color: #6795e0;
   color: white;
   font-weight: bold;
   cursor: pointer;
+  font-size: 16px;
 }
 
 button:hover {
-  background-color: #357bd8;
+  background-color: #4a80d4;
 }
 
-
-
+.login-link {
+  text-align: center;
+  margin-top: 15px;
+}
 
 
 

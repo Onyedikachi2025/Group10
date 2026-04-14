@@ -11,7 +11,7 @@
     <header>
       <h1>Login in to TUD </h1>
     </header>
-    <form>
+    <form onsubmit="loginUser(event)">
       <label for="email">Email or Username</label>
       <input type="text" id="email" name="email" required />
 
@@ -25,5 +25,34 @@
       </p>
     </form>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+const supabase = window.supabase.createClient(
+  "https://eayrzuoieurtabsomrdo.supabase.co",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVheXJ6dW9pZXVydGFic29tcmRvIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3MzE4MzkxMSwiZXhwIjoyMDg4NzU5OTExfQ.Q1cu2iGedOfIdnYMZ5r1faSBbx630RmTx_GTEpst3BM"
+);
+
+async function loginUser(event) {
+  event.preventDefault();
+
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  const { data, error } = await supabase
+    .from('users')
+    .select('*')
+    .eq('email', email)
+    .eq('password', password)
+    .single();
+
+  if (error || !data) {
+    alert("Invalid login");
+  } else {
+    alert("Login successful");
+    window.location.href = "users.html";
+  }
+}
+</script>
 </body>
 </html>

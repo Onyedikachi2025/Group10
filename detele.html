@@ -1,0 +1,61 @@
+<!-- placeholder -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delete Account - TUD</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="form-container">
+    <header>
+      <h1>Close Account</h1>
+      <p class="subtitle warning">This action is permanent. Please enter your credentials to confirm.</p>
+    </header>
+    
+    <form onsubmit="handleDelete(event)">
+      <div class="input-group">
+        <input type="text" id="username" name="username" placeholder="Confirm Username" required />
+      </div>
+
+      <div class="input-group">
+        <input type="password" id="password" name="password" placeholder="Confirm Password" required />
+      </div>
+
+      <button type="submit" class="delete-btn">Delete My Account</button>
+
+      <div class="footer-text">
+        Changed your mind? <a href="login.html">Go back to Login</a>
+      </p>
+    </form>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+const supabase = window.supabase.createClient(
+  "https://eayrzuoieurtabsomrdo.supabase.co",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVheXJ6dW9pZXVydGFic29tcmRvIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3MzE4MzkxMSwiZXhwIjoyMDg4NzU5OTExfQ.Q1cu2iGedOfIdnYMZ5r1faSBbx630RmTx_GTEpst3BM"
+);
+
+async function handleDelete(event) {
+  event.preventDefault();
+
+  const username = document.getElementById("username").value;
+
+  const { error } = await supabase
+    .from('users')
+    .delete()
+    .eq('user_name', username);
+
+  if (error) {
+    alert(error.message);
+  } else {
+    alert("Account deleted");
+    window.location.href = "login.html";
+  }
+}
+</script>
+</body>
+</html>

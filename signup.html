@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -6,71 +6,69 @@
     <title>Signup Page</title>
     <link rel="stylesheet" href="style.css" />
   </head>
-<body>
-  <div class="form-container">
-    <header>
-      <h1>Sign up for TUD</h1>
-    </header>
+  <body>
+    <div class="form-container">
+      <header>
+        <h1>Sign up for TUD</h1>
+      </header>
 
-    <form id="signupForm">
-      <label for="email">Mobile Number or Email Address</label>
-      <input type="text" id="email" placeholder="Email Address" required />
+      <form id="signupForm">
+        <label for="email">Mobile Number or Email Address</label>
+        <input type="text" id="email" placeholder="Email Address" required />
 
-      <label for="password">Password</label>
-      <input type="password" id="password" placeholder="Password" required />
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Password" required />
 
-      <label for="dob">Date of Birth</label>
-      <input type="date" id="dob" required>
+        <label for="dob">Date of Birth</label>
+        <input type="date" id="dob" required />
 
-      <label for="user_name">Username</label>
-      <input type="text" id="username" placeholder="Username" required />
+        <label for="user_name">Username</label>
+        <input type="text" id="username" placeholder="Username" required />
 
-      <button type="button" onclick="handleSubmit()">Submit</button>
-    </form>
-    <p class="login-link">
-      <a href="login.html">I already have an account</a>
-    </p>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+        <button type="button" onclick="handleSubmit()">Submit</button>
+      </form>
+      <p class="login-link">
+        <a href="login.html">I already have an account</a>
+      </p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-<script>
-const supabase = window.supabase.createClient(
-  "https://eayrzuoieurtabsomrdo.supabase.co",
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVheXJ6dW9pZXVydGFic29tcmRvIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3MzE4MzkxMSwiZXhwIjoyMDg4NzU5OTExfQ.Q1cu2iGedOfIdnYMZ5r1faSBbx630RmTx_GTEpst3BM"
-);
+    <script>
+      const supabase = window.supabase.createClient(
+        "https://eayrzuoieurtabsomrdo.supabase.co",
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVheXJ6dW9pZXVydGFic29tcmRvIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3MzE4MzkxMSwiZXhwIjoyMDg4NzU5OTExfQ.Q1cu2iGedOfIdnYMZ5r1faSBbx630RmTx_GTEpst3BM",
+      );
 
-async function handleSubmit() {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-  const birthday = document.getElementById("Date Of Brith").value;
-  const username = document.getElementById("user_name").value;
+      async function handleSubmit() {
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        const birthday = document.getElementById("dob").value;
+        const username = document.getElementById("username").value;
 
-  if (!email || !password || !username) {
-    alert("Please fill all required fields");
-    return;
-  }
+        if (!email || !password || !username) {
+          alert("Please fill all required fields");
+          return;
+        }
 
-  const { data, error } = await supabase
-    .from('users')
-    .insert([
-      {
-        user_name: username,
-        email: email,
-        password: password
+        const { data, error } = await supabase.from("users").insert([
+          {
+            user_name: username,
+            email: email,
+            password: password,
+          },
+        ]);
+        if (error) {
+          console.log(error);
+          alert("Error: " + error.message);
+        } else {
+          alert("Account created!");
+
+          document.getElementById("email").value = "";
+          document.getElementById("password").value = "";
+          document.getElementById("dob").value = "";
+          document.getElementById("username").value = "";
+        }
       }
-    ]);
-  if (error) {
-    console.log(error);
-    alert("Error: " + error.message);
-  } else {
-    alert("Account created!");
-
-    document.getElementById("email").value = "";
-    document.getElementById("password").value = "";
-    document.getElementById("Date of Brith").value = "";
-    document.getElementById("user_name").value = "";
-  }
-}
-</script>
-</body>
+    </script>
+  </body>
 </html>

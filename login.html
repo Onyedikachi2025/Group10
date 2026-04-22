@@ -1,29 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Login in Page</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login to TUD</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="form-container">
-    <header>
-      <h1>Login in to TUD </h1>
-    </header>
-    <form>
-      <label for="email">Email or Username</label>
-      <input type="text" id="email" name="email" required />
+  <main class="main-container">
+    <section class="left-section">
+      <div class="brand-content">
+        <h1>Welcome </h1>
+      </div>
+    </section>
 
-      <label for="password">Password</label>
-      <input type="password" id="password" name="password" required />
+    <section class="right-section">
+      <div class="form-card">
+        <h2>Log in to TUD</h2>
+        <form>
+          <input type="text" placeholder="Email or Username" name="email" required>
+          <input type="password" placeholder="Password" name="password" required>
+          
+          <button type="submit" class="btn-login">Log in</button>
+          <a href="forgotten.html" class="forgot-link">Forgotten password?</a>
 
-      <button type="submit">Login</button>
+          <hr>
+  
+          <div class="create-account-container">
+            <a href="signup.html" class="btn-create">Create new account</a>
+          </div>
+        </form>
 
-      <p class="login-link">
-        <a href="editpage.html">Forgotten Password?</a> <a href="signup.html" class="secondary-btn">Create new account</a>
-      </p>
-    </form>
-  </div>
+      </div>
+    </section>
+  </main>
 </body>
 </html>

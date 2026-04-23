@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -126,29 +126,41 @@ button:hover {
 }
 </style>
 
-<script>
-const supabase = window.supabase.createClient(
-  "YOUR_SUPABASE_URL",
-  "YOUR_ANON_KEY"
-);
+    <script>
+      const supabase = window.supabase.createClient(
+        "https://eayrzuoieurtabsomrdo.supabase.co",
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVheXJ6dW9pZXVydGFic29tcmRvIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3MzE4MzkxMSwiZXhwIjoyMDg4NzU5OTExfQ.Q1cu2iGedOfIdnYMZ5r1faSBbx630RmTx_GTEpst3BM",
+      );
 
-async function handleSubmit() {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-  const birthday = document.getElementById("Date Of Brith").value;
-  const username = document.getElementById("user_name").value;
+      async function handleSubmit() {
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        const birthday = document.getElementById("dob").value;
+        const username = document.getElementById("username").value;
 
-  if (!email || !password || !username) {
-    alert("Please fill all required fields");
-    return;
-  }
+        if (!email || !password || !username) {
+          alert("Please fill all required fields");
+          return;
+        }
 
-  const { data, error } = await supabase
-    .from('users')
-    .insert([
-      {
-        user_name: username,
-        email: email
+        const { data, error } = await supabase.from("users").insert([
+          {
+            user_name: username,
+            email: email,
+            password: password,
+          },
+        ]);
+        if (error) {
+          console.log(error);
+          alert("Error: " + error.message);
+        } else {
+          alert("Account created!");
+
+          document.getElementById("email").value = "";
+          document.getElementById("password").value = "";
+          document.getElementById("dob").value = "";
+          document.getElementById("username").value = "";
+        }
       }
     ]);
 

@@ -15,7 +15,7 @@
       <p class="subtitle warning">This action is permanent. Please enter your credentials to confirm.</p>
     </header>
     
-    <form>
+    <form onsubmit="handleDelete(event)">
       <div class="input-group">
         <input type="text" id="username" name="username" placeholder="Confirm Username" required />
       </div>
@@ -31,6 +31,31 @@
       </p>
     </form>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+<script>
+const supabase = window.supabase.createClient(
+  "https://eayrzuoieurtabsomrdo.supabase.co",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVheXJ6dW9pZXVydGFic29tcmRvIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3MzE4MzkxMSwiZXhwIjoyMDg4NzU5OTExfQ.Q1cu2iGedOfIdnYMZ5r1faSBbx630RmTx_GTEpst3BM"
+);
+
+async function handleDelete(event) {
+  event.preventDefault();
+
+  const username = document.getElementById("username").value;
+
+  const { error } = await supabase
+    .from('users')
+    .delete()
+    .eq('user_name', username);
+
+  if (error) {
+    alert(error.message);
+  } else {
+    alert("Account deleted");
+    window.location.href = "login.html";
+  }
+}
+</script>
 </body>
 </html>

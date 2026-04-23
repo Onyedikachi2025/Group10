@@ -1,155 +1,84 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sign Up</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  </head>
+  <body>
+    <div class="form-container">
+      <header>
+        <h1>Get started</h1>
+        <p>Sign up to see photos and videos from your friends.</p>
+      </header>
 
-  <div class="form-container">
-    <header>
-      <h1>Get started</h1>
-      <p>Sign up to see photos and videos from your friends.</p>
-    </header>
+      <form id="signupForm">
+        <label for="email">Mobile number or email address</label>
+        <input
+          type="text"
+          id="email"
+          placeholder="Mobile number or email address"
+          required
+        />
 
-    <form id="signupForm">
-      <label for="email">Mobile number or email address</label>
-      <input type="text" id="email" placeholder="Mobile number or email address" required />
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Password" required />
 
-      <label for="password">Password</label>
-      <input type="password" id="password" placeholder="Password" required />
+        <label for="dob">Date of birth</label>
+        <div class="birthday-row">
+          <input type="date" id="dob" required />
+        </div>
 
-      <label for="dob">Date of birth</label>
-      <div class="birthday-row">
-        <input type="date" id="dob" required>
-      </div>
+        <label for="full_name">Name</label>
+        <input type="text" id="full_name" placeholder="Full name" required />
 
-      <label for="full_name">Name</label>
-      <input type="text" id="full_name" placeholder="Full name" required />
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="Username" required />
 
-      <label for="username">Username</label>
-      <input type="text" id="username" placeholder="Username" required />
-
-      <button type="button" onclick="handleSubmit()">Sign Up</button>
-      <button><a href="login.html">I already have an account</a></button>
-    </form>
-  </div>
-
-<style>
-body {
-  margin: 0;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  background-color: peachpuff;
-  display: flex;
-  justify-content: center;
-  padding-top: 40px;
-}
-
-.form-container {
-  width: 100%;
-  max-width: 450px; 
-  padding: 30px;
-}
-
-header h1 {
-  font-size: 2rem;
-  font-weight: 600;
-  margin-bottom: 10px;
-  letter-spacing: -0.5px;
-}
-
-header p {
-  color: #737373;
-  font-size: 16px;
-  margin-bottom: 30px;
-}
-
-
-label {
-  display: block;
-  font-weight: 600;
-  font-size: 16px;
-  margin-bottom: 10px;
-  color: #000;
-}
-
-input, select {
-  width: 100%;
-  padding: 18px 25px; 
-  margin-bottom: 25px;
-  
-
-  border: 1px solid #dbdbdb; 
-  border-radius: 50px; 
-  
-  background-color: #ffffff;
-  font-size: 16px;
-  color: #262626;
-  box-sizing: border-box;
-}
-
-button {
-  width: 100%;
-  background-color: darkblue;
-  color: white;
-  border: none;
-  border-radius: 50px; 
-  padding: 16px;
-  font-size: 18px;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 10px;
-}
-
-button:hover {
-  background-color: blue;
-}
-
-.birthday-row {
-  display: flex;
-  gap: 10px;
-}
-
-.login-link {
-  text-align: center;
-  margin-top: 30px;
-  font-size: 16px;
-}
-
-.login-link a {
-  color: purple;
-  text-decoration: none;
-  font-weight: bold;
-}
-</style>
-
+        <button type="button" onclick="handleSubmit()">Sign Up</button>
+        <button><a href="login.html">I already have an account</a></button>
+      </form>
+    </div>
     <script>
-      const supabase = window.supabase.createClient(
-        "https://eayrzuoieurtabsomrdo.supabase.co",
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVheXJ6dW9pZXVydGFic29tcmRvIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3MzE4MzkxMSwiZXhwIjoyMDg4NzU5OTExfQ.Q1cu2iGedOfIdnYMZ5r1faSBbx630RmTx_GTEpst3BM",
-      );
+            const supabase = window.supabase.createClient(
+              "https://eayrzuoieurtabsomrdo.supabase.co",
+              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVheXJ6dW9pZXVydGFic29tcmRvIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3MzE4MzkxMSwiZXhwIjoyMDg4NzU5OTExfQ.Q1cu2iGedOfIdnYMZ5r1faSBbx630RmTx_GTEpst3BM",
+            );
 
-      async function handleSubmit() {
-        const email = document.getElementById("email").value;
-        const password = document.getElementById("password").value;
-        const birthday = document.getElementById("dob").value;
-        const username = document.getElementById("username").value;
+            async function handleSubmit() {
+              const email = document.getElementById("email").value;
+              const password = document.getElementById("password").value;
+              const birthday = document.getElementById("dob").value;
+              const username = document.getElementById("username").value;
 
-        if (!email || !password || !username) {
-          alert("Please fill all required fields");
-          return;
-        }
+              if (!email || !password || !username) {
+                alert("Please fill all required fields");
+                return;
+              }
 
-        const { data, error } = await supabase.from("users").insert([
-          {
-            user_name: username,
-            email: email,
-            password: password,
-          },
-        ]);
+              const { data, error } = await supabase.from("users").insert([
+                {
+                  user_name: username,
+                  email: email,
+                  password: password,
+                },
+              ]);
+              if (error) {
+                console.log(error);
+                alert("Error: " + error.message);
+              } else {
+                alert("Account created!");
+
+                document.getElementById("email").value = "";
+                document.getElementById("password").value = "";
+                document.getElementById("dob").value = "";
+                document.getElementById("username").value = "";
+              }
+            }
+          ]);
+
         if (error) {
           console.log(error);
           alert("Error: " + error.message);
@@ -158,23 +87,98 @@ button:hover {
 
           document.getElementById("email").value = "";
           document.getElementById("password").value = "";
-          document.getElementById("dob").value = "";
-          document.getElementById("username").value = "";
+          document.getElementById("Date of Brith").value = "";
+          document.getElementById("user_name").value = "";
         }
       }
-    ]);
+    </script>
 
-  if (error) {
-    console.log(error);
-    alert("Error: " + error.message);
-  } else {
-    alert("Account created!");
+    <style>
+      body {
+        margin: 0;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+        background-color: peachpuff;
+        display: flex;
+        justify-content: center;
+        padding-top: 40px;
+      }
 
-    document.getElementById("email").value = "";
-    document.getElementById("password").value = "";
-    document.getElementById("Date of Brith").value = "";
-    document.getElementById("user_name").value = "";
-  }
-}
+      .form-container {
+        width: 100%;
+        max-width: 450px;
+        padding: 30px;
+      }
 
-</script>
+      header h1 {
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 10px;
+        letter-spacing: -0.5px;
+      }
+
+      header p {
+        color: #737373;
+        font-size: 16px;
+        margin-bottom: 30px;
+      }
+
+      label {
+        display: block;
+        font-weight: 600;
+        font-size: 16px;
+        margin-bottom: 10px;
+        color: #000;
+      }
+
+      input,
+      select {
+        width: 100%;
+        padding: 18px 25px;
+        margin-bottom: 25px;
+
+        border: 1px solid #dbdbdb;
+        border-radius: 50px;
+
+        background-color: #ffffff;
+        font-size: 16px;
+        color: #262626;
+        box-sizing: border-box;
+      }
+
+      button {
+        width: 100%;
+        background-color: darkblue;
+        color: white;
+        border: none;
+        border-radius: 50px;
+        padding: 16px;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+
+      button:hover {
+        background-color: blue;
+      }
+
+      .birthday-row {
+        display: flex;
+        gap: 10px;
+      }
+
+      .login-link {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 16px;
+      }
+
+      .login-link a {
+        color: purple;
+        text-decoration: none;
+        font-weight: bold;
+      }
+    </style>
+  </body>
+</html>

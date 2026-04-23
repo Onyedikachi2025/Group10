@@ -1,39 +1,48 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login to TUD</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login to TUD</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="main-container">
+      <section class="left-section">
+        <div class="brand-content">
+          <h1>Welcome to TUD.</h1>
+          <img src="collagee.png" alt="TUD Logo" class="logo" />
+        </div>
+      </section>
 
-  <main class="main-container">
-    <section class="left-section">
-      <div class="brand-content">
-        <h1>Welcome </h1>
-      </div>
-    </section>
+      <section class="right-section">
+        <div class="form-card">
+          <h2>Log in to TUD</h2>
+          <form>
+            <input
+              type="text"
+              placeholder="Email or Username"
+              name="email"
+              required
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              name="password"
+              required
+            />
 
-    <section class="right-section">
-      <div class="form-card">
-        <h2>Log in to TUD</h2>
-        <form>
-          <input type="text" placeholder="Email or Username" name="email" required>
-          <input type="password" placeholder="Password" name="password" required>
-          
-          <button type="submit" class="btn-login">Log in</button>
-          <a href="forgotten.html" class="forgot-link">Forgotten password?</a>
+            <button type="submit" class="btn-login">Log in</button>
+            <a href="forgotten.html" class="forgot-link">Forgotten password?</a>
 
-          <hr>
-  
-          <div class="create-account-container">
-            <a href="signup.html" class="btn-create">Create new account</a>
-          </div>
-        </form>
+            <hr />
 
-      </div>
-    </section>
-  </main>
-</body>
+            <div class="create-account-container">
+              <a href="signup.html" class="btn-create">Create new account</a>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>

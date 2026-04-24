@@ -1,61 +1,127 @@
-<!-- placeholder -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Delete Account - TUD</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
+  </head>
 <body>
 
   <div class="form-container">
     <header>
       <h1>Close Account</h1>
-      <p class="subtitle warning">This action is permanent. Please enter your credentials to confirm.</p>
     </header>
-    
-    <form onsubmit="handleDelete(event)">
+    <form onsubmit="return confirm('Are you sure?')">
       <div class="input-group">
-        <input type="text" id="username" name="username" placeholder="Confirm Username" required />
+        <label>Confirm Email</label>
+        <input type="email" name="email" required />
       </div>
 
       <div class="input-group">
-        <input type="password" id="password" name="password" placeholder="Confirm Password" required />
+        <label>Confirm Password</label>
+        <input type="password" name="password" required />
       </div>
 
-      <button type="submit" class="delete-btn">Delete My Account</button>
+      <button type="submit" class="delete-btn">
+        <span>Delete My Account</span>
+      </button>
 
       <div class="footer-text">
-        Changed your mind? <a href="login.html">Go back to Login</a>
-      </p>
+        <a href="login.html">Back to Login</a>
+      </div>
     </form>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-<script>
-const supabase = window.supabase.createClient(
-  "https://eayrzuoieurtabsomrdo.supabase.co",
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVheXJ6dW9pZXVydGFic29tcmRvIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3MzE4MzkxMSwiZXhwIjoyMDg4NzU5OTExfQ.Q1cu2iGedOfIdnYMZ5r1faSBbx630RmTx_GTEpst3BM"
-);
-
-async function handleDelete(event) {
-  event.preventDefault();
-
-  const username = document.getElementById("username").value;
-
-  const { error } = await supabase
-    .from('users')
-    .delete()
-    .eq('user_name', username);
-
-  if (error) {
-    alert(error.message);
-  } else {
-    alert("Account deleted");
-    window.location.href = "login.html";
-  }
-}
-</script>
 </body>
 </html>
+<style>
+  body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f8f8f8; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.form-container {
+  width: 100%;
+  max-width: 500px;
+  padding: 40px;
+  text-align: center;
+}
+
+header h1 {
+  color: #000000;
+  font-size: 42px;
+  font-weight: bold;
+  margin-bottom: 40px;
+  text-align: left;
+}
+
+.input-group {
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+label {
+  display: block;
+  color: #333;
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 12px;
+  margin-left: 10px;
+}
+
+input {
+  width: 100%;
+  padding: 22px 30px;
+  border: 1px solid #dcdcdc;
+  border-radius: 50px; 
+  box-sizing: border-box;
+  font-size: 18px;
+  background-color: #eff4fb;
+  outline: none;
+}
+
+input:focus {
+  border-color: #bcd9e5;
+  background-color: white;
+}
+
+button.delete-btn {
+  width: 100%;
+  background-color: #bcd9e5; 
+  border: none;
+  border-radius: 50px;
+  padding: 20px;
+  cursor: pointer;
+  margin-top: 10px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  transition: 0.2s;
+}
+
+button.delete-btn:hover {
+  background-color: #a8c8d6;
+}
+
+.footer-text {
+  margin-top: 40px;
+}
+
+.footer-text a {
+  color: #666;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.footer-text a:hover {
+  color: #000;
+}
+</style>
